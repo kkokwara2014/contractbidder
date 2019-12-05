@@ -131,14 +131,14 @@
             }
 
             .carousel-item {
-                height: 400px;
+                height: 350px;
             }
 
             .carousel-item img {
                 position: absolute;
                 top: 0;
                 left: 0;
-                min-height: 400px;
+                min-height: 350px;
             }
 
         </style>
@@ -189,14 +189,14 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{{asset('bootstrap_assets/images/bgimage1.jpg')}}" alt="Los Angeles" width="1100"
-                        height="477">
+                        height="690">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{asset('bootstrap_assets/images/bgimage2.jpg')}}" alt="Chicago" width="1100" height="477">
+                    <img src="{{asset('bootstrap_assets/images/bgimage2.jpg')}}" alt="Chicago" width="1100" height="690">
                 </div>
                 <div class="carousel-item">
                     <img src="{{asset('bootstrap_assets/images/bgimage5.jpg')}}" alt="New York" width="1100"
-                        height="477">
+                        height="690">
                 </div>
             </div>
 
