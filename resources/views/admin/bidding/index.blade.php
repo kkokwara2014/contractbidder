@@ -38,9 +38,44 @@
                                     <td>{{$bidding->advert->title}}</td>
                                     <td>&#8358;{{number_format($bidding->bidamount,2)}}</td>
                                     <td>{{$bidding->advert->category->name}}</td>
-                                   
-                                    <td><a href="{{ route('bidding.edit',$bidding->id) }}"><span
-                                                class="fa fa-check-circle-o fa-2x text-success"></span></a></td>
+
+                                    <td>
+                                        @if ($bidding->isawarded==1)
+
+                                        <form id="delete-form-{{$bidding->id}}" style="display: none"
+                                            action="{{ route('bidding.deactivate',$bidding->id) }}" method="post">
+                                            {{ csrf_field() }}
+
+                                        </form>
+                                        <a href="" onclick="
+                                                                if (confirm('Are you sure you want to Unaward this?')) {
+                                                                    event.preventDefault();
+                                                                document.getElementById('delete-form-{{$bidding->id}}').submit();
+                                                                } else {
+                                                                    event.preventDefault();
+                                                                }
+                                                            " class="btn btn-danger btn-sm btn-block">Unaward
+                                        </a>
+                                        @else
+
+                                        <form id="delete-form-{{$bidding->id}}" style="display: none"
+                                            action="{{ route('bidding.activate',$bidding->id) }}" method="post">
+                                            {{ csrf_field() }}
+
+                                        </form>
+                                        <a href="" onclick="
+                                                                if (confirm('Are you sure you want to Award this?')) {
+                                                                    event.preventDefault();
+                                                                document.getElementById('delete-form-{{$bidding->id}}').submit();
+                                                                } else {
+                                                                    event.preventDefault();
+                                                                }
+                                                            " class="btn btn-success btn-sm btn-block">Award
+                                        </a>
+
+                                        @endif
+
+                                    </td>
                                     <td>
                                         <form id="delete-form-{{$bidding->id}}" style="display: none"
                                             action="{{ route('bidding.destroy',$bidding->id) }}" method="post">
@@ -80,7 +115,7 @@
         </div>
 
 
-       
+
 
     </section>
     <!-- /.Left col -->

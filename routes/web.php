@@ -58,6 +58,9 @@ if ($timeIt > date('Y-m-d')) {
         Route::resource('advert', 'AdvertController');
         Route::resource('ministry', 'MinistryController');
         Route::resource('bidding', 'BiddingController');
+
+        Route::post('bidding/{id}/activate', 'BiddingController@activate')->name('bidding.activate');
+    Route::post('bidding/{id}/deactivate', 'BiddingController@deactivate')->name('bidding.deactivate');
         
        
         Route::get('user/profile', 'UserController@profileimage')->name('user.profile');

@@ -115,16 +115,17 @@ class BiddingController extends Controller
             $bidding->save();
     
             return redirect(route('bidding.index'));
-        
     }
     public function deactivate($id)
     {
-        
             $bidding = Bidding::find($id);
             $bidding->isawarded = '0';
             $bidding->save();
     
             return redirect(route('bidding.index'));
-        
+    }
+
+    public function contract($type=''){
+
     }
 }
