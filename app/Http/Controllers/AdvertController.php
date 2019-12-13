@@ -51,7 +51,7 @@ class AdvertController extends Controller
             'category_id' => 'required',
             'ministry_id' => 'required',
             'title' => 'required',
-            'decription' => 'required',
+            'description' => 'required',
             'proposedamount' => 'required',
             'advertimage'=>'required|image|mimes:png,jpg,jpeg|max:10000',
         ]);
@@ -65,8 +65,9 @@ class AdvertController extends Controller
         }
 
         $advert=new Advert;
+        $advert->advertnumber=$request->advertnumber;
         $advert->category_id=$request->category_id;
-        $advert->vministry_id=$request->vministry_id;
+        $advert->ministry_id=$request->ministry_id;
         $advert->user_id=$request->user_id;
         $advert->title=$request->title;
         $advert->description=$request->description;

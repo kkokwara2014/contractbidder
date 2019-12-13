@@ -285,7 +285,7 @@
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                         <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -311,61 +311,143 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
+
+                    @foreach($adverts as $advert)
+
                     <div class="post-preview">
                         <a href="post.html">
                             <h2 class="post-title">
-                                Man must explore, and this is exploration at its greatest
+                                {{$advert->title .'  #'.$advert->advertnumber}}
                             </h2>
-                            <h3 class="post-subtitle">
-                                Problems look mighty small from 150 miles up
-                            </h3>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h3 class="post-subtitle">
+                                        {{}}
+                                    </h3>
+                                    <div>
+                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">View details</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <img src="{{url('advert_images',$advert->imagename)}}" alt=""
+                                        class="img-responsive img-rounded" width="150" height="150">
+                                </div>
+                            </div>
+
                         </a>
                         <p class="post-meta">Posted by
                             <a href="#">Start Bootstrap</a>
                             on September 24, 2019</p>
                     </div>
                     <hr>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                I believe every human has a finite number of heartbeats. I don't intend to waste any of
-                                mine.
-                            </h2>
-                        </a>
-                        <p class="post-meta">Posted by
-                            <a href="#">Start Bootstrap</a>
-                            on September 18, 2019</p>
+                    <div class="card card-primary">
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-md-7" style="margin-left: -18%">
+                                    <h4>{{$advert->category->name}}</h4>
+                                    <div>Vehicle :
+                                        {{$advert->vehicle->make->name.' - '.$advert->vehicle->model.' : '.$advert->vehicle->serialnum}}
+                                    </div>
+                                    <div>Category : {{$advert->category->name}} </div>
+                                    <div>Problem : {{$advert->problem}} </div>
+
+                                    @if (auth()->check())
+                                    <div>Cause : {{$advert->cause}} </div>
+                                    <div>Solution : {{$advert->solution}} </div>
+                                    <div>
+
+                                        {{-- <a href="#" class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#modal-default">
+                                            Write a review
+                                        </a> --}}
+                                        <br>
+
+
+                                        <div id="app">
+                                            <star-rating @rating-selected="rating = $event" :rating="rating">
+                                            </star-rating>
+                                        </div>
+
+
+                                    </div>
+
+                                    @else
+                                    <div>
+                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">View details</a>
+                                    </div>
+
+                                    @endif
+                                    <p></p>
+                                    {{-- @forelse ($fault->review as $review) --}}
+                                    {{-- <p style="background-color: green; color: cornsilk;">{{ $review->headline }}
+                                    </p> --}}
+
+
+                                    {{-- @empty --}}
+                                    {{-- No Review yet. --}}
+                                    {{-- @endforelse --}}
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <hr>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                Science has not yet mastered prophecy
-                            </h2>
-                            <h3 class="post-subtitle">
-                                We predict too much for the next year and yet far too little for the next ten.
-                            </h3>
-                        </a>
-                        <p class="post-meta">Posted by
-                            <a href="#">Start Bootstrap</a>
-                            on August 24, 2019</p>
+                    <br>
+
+
+                    {{-- Data input modal area --}}
+                    <div class="modal fade" id="modal-default">
+                        <div class="modal-dialog modal-md">
+
+                            <form action="{{ route('faultreviews.store') }}" method="post"
+                                enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Write a review</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="">Rating</label>
+                                            <input type="text" class="form-control" name="rating">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Headline</label>
+                                            <input type="text" class="form-control" name="headline">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Description</label>
+                                            <input type="text" class="form-control" name="description">
+                                        </div>
+
+                                        <input type="hidden" name="fault_id" value="{{$fault->id}}">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+
+                            </form>
+                        </div>
+                        <!-- /.modal-dialog -->
                     </div>
-                    <hr>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                Failure is not an option
-                            </h2>
-                            <h3 class="post-subtitle">
-                                Many say exploration is part of our destiny, but it’s actually our duty to future
-                                generations.
-                            </h3>
-                        </a>
-                        <p class="post-meta">Posted by
-                            <a href="#">Start Bootstrap</a>
-                            on July 8, 2019</p>
-                    </div>
-                    <hr>
+                    <!-- /.modal -->
+
+
+                    @endforeach
+
+
+                    <p>{{$faults->links()}}</p>
+
+
+
                     <!-- Pager -->
                     <div class="clearfix">
                         <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>

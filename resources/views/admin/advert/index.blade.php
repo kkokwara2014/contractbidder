@@ -36,7 +36,13 @@
                             <tbody>
                                 @foreach ($adverts as $advert)
                                 <tr>
-                                    <td>{{$advert->name}}</td>
+                                    <td>{{$advert->advertnumber}}</td>
+                                    <td>{{$advert->category->name}}</td>
+                                    <td>{{$advert->ministry->name}}</td>
+                                    <td>{{$advert->user->lastname}}</td>
+                                    <td>{{$advert->title}}</td>
+                                    <td>&#8358; {{$advert->proposedamount}}</td>
+                                   
                                     <td><a href="{{ route('advert.edit',$advert->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
                                     <td>
@@ -97,8 +103,8 @@
                             <div class="form-group">
                                 <label for="">Advert #</label>
                                 <input style="background-color: dodgerblue; color:floralwhite" type="text"
-                                    class="form-control" name="advertnumber" value="{{'cont-'. rand(38563587, 98579899)}}"
-                                    readonly>
+                                    class="form-control" name="advertnumber"
+                                    value="{{'cont-'. rand(38563587, 98579899)}}" readonly>
                             </div>
 
                             <div class="form-group">
@@ -130,16 +136,21 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Description <b style="color: red;">*</b> </label>
-                                <textarea class="form-control" name="description" id="" cols="30" rows="2" placeholder="Advert Description"></textarea>
-                                
+                                <textarea class="form-control" name="description" id="" cols="30" rows="2"
+                                    placeholder="Advert Description"></textarea>
+
                             </div>
 
                             <div class="form-group">
                                 <label for="">Proposed Amount <b style="color: red;">*</b> </label>
-                                <input type="text" class="form-control" name="proposedamount" placeholder="Amount" maxlength="9">
+                                <input type="text" class="form-control" name="proposedamount" placeholder="Amount"
+                                    maxlength="9">
                             </div>
 
-                            <input type="file" name="advertimage">
+                            <div class="form-group">
+                                <label for="">Upload Contract Image <b style="color: red;">*</b> </label>
+                                <input type="file" name="advertimage">
+                            </div>
 
                         </div>
                         <div class="modal-footer">
