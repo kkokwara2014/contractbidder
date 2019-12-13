@@ -7,6 +7,8 @@ use App\Category;
 use App\Ministry;
 use Illuminate\Http\Request;
 
+use Image;
+
 use Auth;
 
 class AdvertController extends Controller
@@ -44,7 +46,38 @@ class AdvertController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formInput=$request->except('advertimage');
+        $this->validate($request, [
+            'category_id' => 'required',
+            'ministry_id' => 'required',
+            'title' => 'required',
+            'decription' => 'required',
+            'proposedamount' => 'required',
+            'advertimage'=>'required|image|mimes:png,jpg,jpeg|max:10000',
+        ]);
+
+        if ($request->hasFile('advertimage')) {
+            $image=$request->file('advertimage');
+            $imageName=time().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(600,600)->save(public_path('advert_images/'.$imageName));
+
+            $formInput['advertimage']=$imageName;
+        }
+
+        $advert=new Advert;
+        $advert->category_id=$request->category_id;
+        $advert->vministry_id=$request->vministry_id;
+        $advert->user_id=$request->user_id;
+        $advert->title=$request->title;
+        $advert->description=$request->description;
+        $advert->proposedamount=$request->proposedamount;
+        $advert->advertimage=$formInput['advertimage'];
+
+        $advert->save();
+
+        return redirect()->route('advert.index');
+
+
     }
 
     /**
