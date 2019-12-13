@@ -102,6 +102,131 @@
 </body>
 
 </html> --}}
+{{--
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Contract Bidding System</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{asset('bootstrap_assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<style>
+    /* Make the image fully responsive */
+    .carousel-inner img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .carousel-item {
+        height: 350px;
+    }
+
+    .carousel-item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 350px;
+    }
+
+</style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Contract Bidding</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Carousel-->
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{asset('bootstrap_assets/images/bgimage1.jpg')}}" alt="Los Angeles" width="1100"
+                    height="690">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('bootstrap_assets/images/bgimage2.jpg')}}" alt="Chicago" width="1100" height="690">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('bootstrap_assets/images/bgimage5.jpg')}}" alt="New York" width="1100" height="690">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <!--End Carousel-->
+
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                gskhskhfd
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{asset('bootstrap_assets/vendor/jquery/jquery.slim.min.js')}}"></script>
+    <script src="{{asset('bootstrap_assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+</body>
+
+</html> --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -118,112 +243,175 @@
         <!-- Bootstrap core CSS -->
         <link href="{{asset('bootstrap_assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- Custom fonts for this template -->
+        <link href="{{asset('bootstrap_assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet"
+            type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+            type='text/css'>
+        <link
+            href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+            rel='stylesheet' type='text/css'>
 
-        <style>
-            /* Make the image fully responsive */
-            .carousel-inner img {
-                width: 100%;
-                height: 40%;
-            }
+        <!-- Custom styles for this template -->
+        <link href="{{asset('bootstrap_assets/css/clean-blog.min.css')}}" rel="stylesheet">
 
-            .carousel-item {
-                height: 350px;
-            }
-
-            .carousel-item img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                min-height: 350px;
-            }
-
-        </style>
     </head>
 
     <body>
 
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#">Contract Bidding</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand" href="#">Contract Bidder</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                         <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <!--Carousel-->
-        <div id="demo" class="carousel slide" data-ride="carousel">
-
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset('bootstrap_assets/images/bgimage1.jpg')}}" alt="Los Angeles" width="1100"
-                        height="690">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('bootstrap_assets/images/bgimage2.jpg')}}" alt="Chicago" width="1100" height="690">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('bootstrap_assets/images/bgimage5.jpg')}}" alt="New York" width="1100"
-                        height="690">
+        <!-- Page Header -->
+        <header class="masthead" style="background-image: url('{{asset('bootstrap_assets/img/home-bg.jpg')}}')">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>Bid Contracts</h1>
+                            <span class="subheading">...enabling platform for bidding contracts</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </header>
 
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-
-        <!--End Carousel-->
-
-
-        <!-- Page Content -->
+        <!-- Main Content -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    gskhskhfd
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                Man must explore, and this is exploration at its greatest
+                            </h2>
+                            <h3 class="post-subtitle">
+                                Problems look mighty small from 150 miles up
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">Start Bootstrap</a>
+                            on September 24, 2019</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                I believe every human has a finite number of heartbeats. I don't intend to waste any of
+                                mine.
+                            </h2>
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">Start Bootstrap</a>
+                            on September 18, 2019</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                Science has not yet mastered prophecy
+                            </h2>
+                            <h3 class="post-subtitle">
+                                We predict too much for the next year and yet far too little for the next ten.
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">Start Bootstrap</a>
+                            on August 24, 2019</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                Failure is not an option
+                            </h2>
+                            <h3 class="post-subtitle">
+                                Many say exploration is part of our destiny, but it’s actually our duty to future
+                                generations.
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">Start Bootstrap</a>
+                            on July 8, 2019</p>
+                    </div>
+                    <hr>
+                    <!-- Pager -->
+                    <div class="clearfix">
+                        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <p class="copyright text-muted">Copyright &copy; contractbidder 2019</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         <!-- Bootstrap core JavaScript -->
-        <script src="{{asset('bootstrap_assets/vendor/jquery/jquery.slim.min.js')}}"></script>
+        <script src="{{asset('bootstrap_assets/vendor/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('bootstrap_assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="{{asset('bootstrap_assets/js/clean-blog.min.js')}}"></script>
 
     </body>
 

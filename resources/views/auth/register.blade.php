@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Contractor Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -49,7 +49,7 @@
                                 class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
                                     name="phone" value="{{ old('phone') }}" required autocomplete="phone"
                                     maxlength="11">
 
@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                                 <input id="companyname" type="text" class="form-control @error('companyname') is-invalid @enderror"
                                     name="companyname" value="{{ old('companyname') }}" required autocomplete="companyname"
-                                    maxlength="11">
+                                    >
 
                                 @error('companyname')
                                 <span class="invalid-feedback" role="alert">
