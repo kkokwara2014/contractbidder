@@ -15,6 +15,11 @@ class CreateBiddingsTable extends Migration
     {
         Schema::create('biddings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('advert_id');
+            $table->string('bidamount');
+            $table->string('quotationfile');
+            $table->tinyInteger('isawarded')->default('0');
             $table->timestamps();
         });
     }
