@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bidding;
 use Illuminate\Http\Request;
 
 class BiddingController extends Controller
@@ -34,7 +35,28 @@ class BiddingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'bidamount' => 'required',
+            'quotationfile' => 'required|file|max:5000|mimes:docx,doc,pdf',
+        ]);
+
+
+        if ($request->hasFile('quotationfile')) {
+            $filenameWithTime = time() . '_' . $request->quotationfile->getClientOriginalName();
+            $filenameToStore = $request->quotationfile->storeAs('public/quotations', $filenameWithTime);
+        }
+
+        //    create an instance of Logbook
+        $bidding = new Bidding;
+        $bidding->advert_id = $request->advert_id;
+        $bidding->user_id = $request->user_id;
+        $bidding->bidamount = $request->bidamount;
+        $bidding->quotationfile = $filenameToStore;
+
+        $bidding->save();
+
+        
+        return redirect()->route('index');
     }
 
     /**

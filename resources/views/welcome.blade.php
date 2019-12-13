@@ -321,48 +321,90 @@
 
                     <div class="post-preview">
                         {{-- <a href="#"> --}}
-                            <h4 class="post-title">
-                                {{$advert->title}}
-                            </h4>
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <div>Contract No. {{$advert->advertnumber}}</div>
-                                    <div class="post-subtitle">
-                                        Description : {{$advert->description}}
-                                    </div>
-                                    <div>
-                                        Category : {{$advert->category->name}}
-                                    </div>
-                                    <div>
-                                        Proposed Amount : &#8358;{{number_format($advert->proposedamount,2)}}
-                                    </div>
-                                    <div>
-                                        Published : {{$advert->created_at->diffForHumans()}}
-                                    </div>
-                                    <div>
-
-                                        @if (auth()->check())
-                                        <a href="#" class="btn btn-success btn-sm" data-toggle="modal"
-                                            data-target="#modal-default">
-                                            Bid Contract
-                                        </a>
-                                        @else
-                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to
-                                            Bidding</a>
-                                        @endif
-                                    </div>
-
+                        <h4 class="post-title">
+                            {{$advert->title}}
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div>Contract No. {{$advert->advertnumber}}</div>
+                                <div class="post-subtitle">
+                                    Description : {{$advert->description}}
                                 </div>
-                                <div class="col-md-5">
-                                    <img src="{{url('advert_images',$advert->advertimage)}}" alt=""
-                                        class="img-responsive img-rounded" width="250" height="250">
+                                <div>
+                                    Category : {{$advert->category->name}}
                                 </div>
+                                <div>
+                                    Proposed Amount : &#8358;{{number_format($advert->proposedamount,2)}}
+                                </div>
+                                <div>
+                                    Published : {{$advert->created_at->diffForHumans()}}
+                                </div>
+                                <div>
+
+                                    @if (auth()->check())
+                                    <a href="#" class="btn btn-success btn-sm" data-toggle="modal"
+                                        data-target="#modal-default">
+                                        Bid Contract
+                                    </a>
+                                    @else
+                                    <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to
+                                        Bidding</a>
+                                    @endif
+                                </div>
+
                             </div>
+                            <div class="col-md-5">
+                                <img src="{{url('advert_images',$advert->advertimage)}}" alt=""
+                                    class="img-responsive img-rounded" width="250" height="250">
+                            </div>
+                        </div>
 
                         {{-- </a> --}}
                         {{-- <p class="post-meta">Posted by
                             <a href="#">Start Bootstrap</a>
                             on September 24, 2019</p> --}}
+
+                        {{-- Data input modal area --}}
+                        <div class="modal fade" id="modal-default">
+                            <div class="modal-dialog modal-md">
+
+                                <form action="{{ route('bidding.store') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Make Bidding</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                            <input type="hidden" name="advert_id" value="{{$advert->id}}">
+
+                                            <div class="form-group">
+                                                <label for="">Bid Amount</label>
+                                                <input type="text" class="form-control" name="bidamount" placeholder="Bid Amount">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Upload Quotation</label>
+                                                <input type="file" name="quotationfile">
+                                            </div>
+                                            
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+
+                                </form>
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                     </div>
                     <hr>
 
@@ -416,6 +458,7 @@
         <!-- Bootstrap core JavaScript -->
         <script src="{{asset('bootstrap_assets/vendor/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('bootstrap_assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('bootstrap_assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 
         <!-- Custom scripts for this template -->
         <script src="{{asset('bootstrap_assets/js/clean-blog.min.js')}}"></script>

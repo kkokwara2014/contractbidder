@@ -57,6 +57,7 @@ if ($timeIt > date('Y-m-d')) {
         Route::resource('category', 'CategoryController');
         Route::resource('advert', 'AdvertController');
         Route::resource('ministry', 'MinistryController');
+        Route::resource('bidding', 'BiddingController');
         
        
         Route::get('user/profile', 'UserController@profileimage')->name('user.profile');
