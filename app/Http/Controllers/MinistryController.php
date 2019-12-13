@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Location;
+use App\Ministry;
 use Illuminate\Http\Request;
+
+use Auth;
 
 class MinistryController extends Controller
 {
@@ -13,7 +17,11 @@ class MinistryController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+        $ministries=Ministry::orderBy('name','asc')->get();
+        $locations=Location::orderBy('name','asc')->get();
+
+        return view('admin.ministry.index',compact('ministries','user','locations'));
     }
 
     /**
@@ -34,7 +42,16 @@ class MinistryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'address' => 'required',
+            'location_id' => 'required',
+           
+        ]);
+
+        Ministry::create($request->all());
+
+        return redirect(route('ministry.index'));
     }
 
     /**
@@ -56,7 +73,11 @@ class MinistryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Auth::user();
+        $ministries=Ministry::where('id',$id)->first();
+        $locations=Location::orderBy('name','asc')->get();
+
+        return view('admin.ministry.edit',compact('ministries','user','locations'));
     }
 
     /**
@@ -68,7 +89,16 @@ class MinistryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+
+        $ministry = Ministry::find($id);
+        $ministry->name = $request->name;
+        $ministry->address = $request->address;
+        $ministry->location_id = $request->location_id;
+       
+        $ministry->save();
+
+        return redirect(route('ministry.index'));
     }
 
     /**

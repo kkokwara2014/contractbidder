@@ -7,9 +7,9 @@
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
-    <section class="col-lg-12 connectedSortable">
+    <section class="col-lg-10 connectedSortable">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-            <span class="fa fa-plus"></span> Add Advert
+            <span class="fa fa-plus"></span> Add Ministry
         </button>
         <br><br>
 
@@ -22,33 +22,29 @@
                         <table id="example1" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Advert #</th>
-                                    <th>Category</th>
-                                    <th>From</th>
-                                    <th>By</th>
-                                    <th>Title</th>
-                                    <th>Amount</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($adverts as $advert)
+                                @foreach ($ministries as $ministry)
                                 <tr>
-                                    <td>{{$advert->name}}</td>
-                                    <td><a href="{{ route('advert.edit',$advert->id) }}"><span
+                                    <td>{{$ministry->name}}</td>
+                                    <td><a href="{{ route('ministry.edit',$ministry->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
                                     <td>
-                                        <form id="delete-form-{{$advert->id}}" style="display: none"
-                                            action="{{ route('advert.destroy',$advert->id) }}" method="post">
+                                        <form id="delete-form-{{$ministry->id}}" style="display: none"
+                                            action="{{ route('ministry.destroy',$ministry->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{method_field('DELETE')}}
                                         </form>
                                         <a href="" onclick="
                                                             if (confirm('Are you sure you want to delete this?')) {
                                                                 event.preventDefault();
-                                                            document.getElementById('delete-form-{{$advert->id}}').submit();
+                                                            document.getElementById('delete-form-{{$ministry->id}}').submit();
                                                             } else {
                                                                 event.preventDefault();
                                                             }
@@ -61,12 +57,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Advert #</th>
-                                    <th>Category</th>
-                                    <th>From</th>
-                                    <th>By</th>
-                                    <th>Title</th>
-                                    <th>Amount</th>
+                                    <th>Name</th>                      
+                                    <th>Address</th>                      
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -84,63 +76,36 @@
         <div class="modal fade" id="modal-default">
             <div class="modal-dialog">
 
-                <form action="{{ route('advert.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('ministry.store') }}" method="post">
                     {{ csrf_field() }}
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title"><span class="fa fa-bullhorn"></span> Add Advert</h4>
+                            <h4 class="modal-title"><span class="fa fa-building-o"></span> Add Ministry</h4>
                         </div>
-
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="">Advert #</label>
-                                <input style="background-color: dodgerblue; color:floralwhite" type="text"
-                                    class="form-control" name="advertnumber" value="{{'cont-'. rand(38563587, 98579899)}}"
-                                    readonly>
+                                <label for="">Name <b style="color: red;">*</b> </label>
+                                <input type="text" class="form-control" name="name" placeholder="Ministry Name"
+                                    autofocus>
                             </div>
-
                             <div class="form-group">
-                                <select class="form-control" name="category_id" id="category_id">
-                                    <option selected="disabled">Select Category</option>
-                                    @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">
-                                        {{$category->name}}
+                                <label for="">Address <b style="color: red;">*</b> </label>
+                                <textarea class="form-control" name="address" id="" cols="30" rows="2" placeholder="Ministry Address"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">State <b style="color: red;">*</b> </label>
+                                <select class="form-control" name="location_id" id="location_id">
+                                    <option selected="disabled">Select State</option>
+                                    @foreach ($locations as $location)
+                                    <option value="{{$location->id}}">
+                                        {{$location->name}}
                                     </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <select class="form-control" name="ministry_id" id="ministry_id">
-                                    <option selected="disabled">Select Ministry</option>
-                                    @foreach ($ministries as $ministry)
-                                    <option value="{{$ministry->id}}">
-                                        {{$ministry->name}}
-                                    </option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-
-                            <div class="form-group">
-                                <label for="">Title <b style="color: red;">*</b> </label>
-                                <input type="text" class="form-control" name="title" placeholder="Advert Title">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Description <b style="color: red;">*</b> </label>
-                                <textarea class="form-control" name="description" id="" cols="30" rows="2" placeholder="Advert Description"></textarea>
-                                
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Proposed Amount <b style="color: red;">*</b> </label>
-                                <input type="text" class="form-control" name="proposedamount" placeholder="Amount" maxlength="9">
-                            </div>
-
-                            <input type="file" name="advertimage">
-
+                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
