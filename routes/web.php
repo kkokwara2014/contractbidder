@@ -54,6 +54,7 @@ if ($timeIt > date('Y-m-d')) {
     Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         Route::get('/', 'AdminController@index')->name('dashboard.index');
         Route::resource('category', 'CategoryController');
+        Route::resource('advert', 'AdvertController');
         
        
         Route::get('user/profile', 'UserController@profileimage')->name('user.profile');

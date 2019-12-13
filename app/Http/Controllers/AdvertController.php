@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Advert;
+use App\Category;
+use App\Ministry;
 use Illuminate\Http\Request;
+
+use Auth;
 
 class AdvertController extends Controller
 {
@@ -13,7 +18,12 @@ class AdvertController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+        $categories=Category::orderBy('name','asc')->get();
+        $ministries=Ministry::orderBy('name','asc')->get();
+        $adverts=Advert::orderBy('created_at','desc')->get();
+
+        return view('admin.advert.index',compact('adverts','user','categories','ministries'));
     }
 
     /**

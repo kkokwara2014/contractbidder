@@ -1,8 +1,8 @@
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
-    Powered by Dominic Nwafor - 2017/HND/24179/CS.
+    Powered by Oluchukwu Peter - 2017/HND//CS.
   </div>
-  <strong>Copyright &copy; 2019 childbirthreg</strong> All rights
+  <strong>Copyright &copy; 2019 contractbidder</strong> All rights
   reserved.
 </footer>
 
