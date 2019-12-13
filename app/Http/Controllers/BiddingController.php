@@ -15,10 +15,10 @@ class BiddingController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
-        $biddings=Bidding::orderBy('created_at','desc')->get();
+        $user = Auth::user();
+        $biddings = Bidding::orderBy('created_at', 'desc')->get();
 
-        return view('admin.bidding.index',compact('biddings','user'));
+        return view('admin.bidding.index', compact('biddings', 'user'));
     }
 
     /**
@@ -59,7 +59,7 @@ class BiddingController extends Controller
 
         $bidding->save();
 
-        
+
         return redirect()->route('index');
     }
 
@@ -110,22 +110,32 @@ class BiddingController extends Controller
 
     public function activate($id)
     {
-            $bidding = Bidding::find($id);
-            $bidding->isawarded = '1';
-            $bidding->save();
-    
-            return redirect(route('bidding.index'));
+        $bidding = Bidding::find($id);
+        $bidding->isawarded = '1';
+        $bidding->save();
+
+        return redirect(route('bidding.index'));
     }
     public function deactivate($id)
     {
-            $bidding = Bidding::find($id);
-            $bidding->isawarded = '0';
-            $bidding->save();
-    
-            return redirect(route('bidding.index'));
+        $bidding = Bidding::find($id);
+        $bidding->isawarded = '0';
+        $bidding->save();
+
+        return redirect(route('bidding.index'));
     }
 
-    public function contract($type=''){
-
+    public function contract($type = '')
+    {
+        $user = Auth::user();
+        if ($type=='awarded') {
+            $contracts=Bidding::where('isawarded','1')->get();
+        } elseif($type=='unawarded') {
+            $contracts=Bidding::where('isawarded','0')->get();
+        }else{
+            $contracts=Bidding::all();
+        }
+        
+        return view('admin.bidding',compact('contracts','user'));
     }
 }

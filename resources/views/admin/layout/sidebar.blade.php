@@ -38,7 +38,7 @@
       <li><a href="{{route('ministry.index')}}"><i class="fa fa-building-o"></i> Ministry</a></li>
       <li><a href="{{route('bidding.index')}}"><i class="fa fa-tags"></i> Biddings</a></li>
 
-      <li class="treeview">
+      {{-- <li class="treeview">
         <a href="#">
           <i class="fa fa-cubes"></i>
           <span>Contracts</span>
@@ -47,12 +47,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Awarded Contracts</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Unawarded Contracts</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> All Contracts</a></li>
+        <li><a href="{{url('dashboard/bidding/contract/awarded')}}"><i class="fa fa-circle-o"></i> Awarded Contracts</a></li>
+          <li><a href="{{url('dashboard/bidding/contract/unawarded')}}"><i class="fa fa-circle-o"></i> Unawarded Contracts</a></li>
+          <li><a href="{{url('dashboard/bidding/contract')}}"><i class="fa fa-circle-o"></i> All Contracts</a></li>
           
         </ul>
-      </li>
+      </li> --}}
 
       {{-- @endif --}}
 
