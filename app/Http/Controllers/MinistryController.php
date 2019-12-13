@@ -89,7 +89,12 @@ class MinistryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request, [
+            'name' => 'required|string',
+            'address' => 'required',
+            'location_id' => 'required',
+           
+        ]);
 
         $ministry = Ministry::find($id);
         $ministry->name = $request->name;
@@ -109,6 +114,7 @@ class MinistryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ministries = Ministry::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

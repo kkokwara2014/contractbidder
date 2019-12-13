@@ -8,8 +8,8 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('category.index') }}" class="btn btn-success">
-            <span class="fa fa-eye"></span> All Categories
+        <a href="{{ route('ministry.index') }}" class="btn btn-success">
+            <span class="fa fa-eye"></span> All Ministries
         </a>
         <br><br>
 
@@ -19,19 +19,36 @@
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('category.update',$categories->id) }}" method="post">
+                        <form action="{{ route('ministry.update',$ministries->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
 
                             <div class="form-group">
                                 <label for="">Name <b style="color: red;">*</b> </label>
-                                <input type="text" class="form-control" name="name" placeholder="category Name"
-                                    value="{{$categories->name}}">
+                            <input type="text" class="form-control" name="name" value="{{$ministries->name}}"
+                                    autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Address <b style="color: red;">*</b> </label>
+                                <textarea class="form-control" name="address" id="" cols="30" rows="2" >{{$ministries->address}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">State</label>
+                                <select name="location_id" class="form-control">
+                                    <option selected="disabled">Select State</option>
+                                    @foreach ($locations as $location)
+
+                                    <option value="{{$location->id}}"
+                                        {{$location->id==$ministries->location_id ? 'selected':''}}>
+                                        {{$location->name}}</option>
+
+                                    @endforeach
+                                </select>
                             </div>
                             
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('category.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('ministry.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>
                     </form>

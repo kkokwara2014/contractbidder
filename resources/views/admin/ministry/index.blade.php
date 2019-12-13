@@ -7,7 +7,7 @@
 <!-- Main row -->
 <div class="row">
     <!-- Left col -->
-    <section class="col-lg-10 connectedSortable">
+    <section class="col-lg-9 connectedSortable">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
             <span class="fa fa-plus"></span> Add Ministry
         </button>
@@ -33,6 +33,8 @@
                                 @foreach ($ministries as $ministry)
                                 <tr>
                                     <td>{{$ministry->name}}</td>
+                                    <td>{{$ministry->address.', '.$ministry->location->name}}</td>
+                                   
                                     <td><a href="{{ route('ministry.edit',$ministry->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
                                     <td>
