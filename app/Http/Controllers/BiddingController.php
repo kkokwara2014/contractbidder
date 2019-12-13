@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bidding;
+use Auth;
 use Illuminate\Http\Request;
 
 class BiddingController extends Controller
@@ -14,7 +15,10 @@ class BiddingController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+        $biddings=Bidding::orderBy('created_at','desc')->get();
+
+        return view('admin.bidding.index',compact('biddings','user'));
     }
 
     /**
@@ -102,5 +106,25 @@ class BiddingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function activate($id)
+    {
+            $bidding = Bidding::find($id);
+            $bidding->isawarded = '1';
+            $bidding->save();
+    
+            return redirect(route('bidding.index'));
+        
+    }
+    public function deactivate($id)
+    {
+        
+            $bidding = Bidding::find($id);
+            $bidding->isawarded = '0';
+            $bidding->save();
+    
+            return redirect(route('bidding.index'));
+        
     }
 }

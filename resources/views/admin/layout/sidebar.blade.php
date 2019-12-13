@@ -42,6 +42,7 @@
       <li><a href="{{route('category.index')}}"><i class="fa fa-th"></i> Category</a></li>
       <li><a href="{{route('advert.index')}}"><i class="fa fa-bullhorn"></i> Adverts</a></li>
       <li><a href="{{route('ministry.index')}}"><i class="fa fa-building-o"></i> Ministry</a></li>
+      <li><a href="{{route('bidding.index')}}"><i class="fa fa-tags"></i> Biddings</a></li>
 
       {{-- @endif --}}
 
