@@ -282,7 +282,12 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
+                            @if (auth()->check())
+                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+
+                            @else
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            @endif
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">Register</a>
@@ -315,7 +320,7 @@
                     @foreach($adverts as $advert)
 
                     <div class="post-preview">
-                        <a href="#">
+                        {{-- <a href="#"> --}}
                             <h4 class="post-title">
                                 {{$advert->title}}
                             </h4>
@@ -335,12 +340,17 @@
                                         Published : {{$advert->created_at->diffForHumans()}}
                                     </div>
                                     <div>
-                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to Bidding</a>
-                                    </div>
-                                    <div>
-                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to Bidding</a>
-                                    </div>
 
+                                        @if (auth()->check())
+                                        <a href="#" class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#modal-default">
+                                            Bid Contract
+                                        </a>
+                                        @else
+                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to
+                                            Bidding</a>
+                                        @endif
+                                    </div>
 
                                 </div>
                                 <div class="col-md-5">
@@ -349,13 +359,13 @@
                                 </div>
                             </div>
 
-                        </a>
+                        {{-- </a> --}}
                         {{-- <p class="post-meta">Posted by
                             <a href="#">Start Bootstrap</a>
                             on September 24, 2019</p> --}}
                     </div>
                     <hr>
-                    
+
                     @endforeach
 
 

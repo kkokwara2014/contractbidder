@@ -51,6 +51,13 @@ class LoginController extends Controller
         
         return redirect(route('index'));
     }
+    public function logout()
+    {
+        $this->guard()->logout();
+        // $request->session()->invalidate();
+        
+        return redirect(route('index'));
+    }
 
     protected function authenticated(Request $request, $user)
     {
