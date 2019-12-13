@@ -310,148 +310,63 @@
         <!-- Main Content -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="col-lg-10 col-md-10 mx-auto">
 
                     @foreach($adverts as $advert)
 
                     <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                {{$advert->title .'  #'.$advert->advertnumber}}
-                            </h2>
+                        <a href="#">
+                            <h4 class="post-title">
+                                {{$advert->title}}
+                            </h4>
                             <div class="row">
                                 <div class="col-md-7">
-                                    <h3 class="post-subtitle">
-                                        {{}}
-                                    </h3>
-                                    <div>
-                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">View details</a>
+                                    <div>Contract No. {{$advert->advertnumber}}</div>
+                                    <div class="post-subtitle">
+                                        Description : {{$advert->description}}
                                     </div>
+                                    <div>
+                                        Category : {{$advert->category->name}}
+                                    </div>
+                                    <div>
+                                        Proposed Amount : &#8358;{{number_format($advert->proposedamount,2)}}
+                                    </div>
+                                    <div>
+                                        Published : {{$advert->created_at->diffForHumans()}}
+                                    </div>
+                                    <div>
+                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to Bidding</a>
+                                    </div>
+                                    <div>
+                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to Bidding</a>
+                                    </div>
+
+
                                 </div>
                                 <div class="col-md-5">
-                                    <img src="{{url('advert_images',$advert->imagename)}}" alt=""
-                                        class="img-responsive img-rounded" width="150" height="150">
+                                    <img src="{{url('advert_images',$advert->advertimage)}}" alt=""
+                                        class="img-responsive img-rounded" width="250" height="250">
                                 </div>
                             </div>
 
                         </a>
-                        <p class="post-meta">Posted by
+                        {{-- <p class="post-meta">Posted by
                             <a href="#">Start Bootstrap</a>
-                            on September 24, 2019</p>
+                            on September 24, 2019</p> --}}
                     </div>
                     <hr>
-                    <div class="card card-primary">
-                        <div class="card-body">
-                            <div class="row">
-
-                                <div class="col-md-7" style="margin-left: -18%">
-                                    <h4>{{$advert->category->name}}</h4>
-                                    <div>Vehicle :
-                                        {{$advert->vehicle->make->name.' - '.$advert->vehicle->model.' : '.$advert->vehicle->serialnum}}
-                                    </div>
-                                    <div>Category : {{$advert->category->name}} </div>
-                                    <div>Problem : {{$advert->problem}} </div>
-
-                                    @if (auth()->check())
-                                    <div>Cause : {{$advert->cause}} </div>
-                                    <div>Solution : {{$advert->solution}} </div>
-                                    <div>
-
-                                        {{-- <a href="#" class="btn btn-success btn-sm" data-toggle="modal"
-                                            data-target="#modal-default">
-                                            Write a review
-                                        </a> --}}
-                                        <br>
-
-
-                                        <div id="app">
-                                            <star-rating @rating-selected="rating = $event" :rating="rating">
-                                            </star-rating>
-                                        </div>
-
-
-                                    </div>
-
-                                    @else
-                                    <div>
-                                        <a href="{{route('login')}}" class="btn btn-primary btn-sm">View details</a>
-                                    </div>
-
-                                    @endif
-                                    <p></p>
-                                    {{-- @forelse ($fault->review as $review) --}}
-                                    {{-- <p style="background-color: green; color: cornsilk;">{{ $review->headline }}
-                                    </p> --}}
-
-
-                                    {{-- @empty --}}
-                                    {{-- No Review yet. --}}
-                                    {{-- @endforelse --}}
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-
-                    {{-- Data input modal area --}}
-                    <div class="modal fade" id="modal-default">
-                        <div class="modal-dialog modal-md">
-
-                            <form action="{{ route('faultreviews.store') }}" method="post"
-                                enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Write a review</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="form-group">
-                                            <label for="">Rating</label>
-                                            <input type="text" class="form-control" name="rating">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Headline</label>
-                                            <input type="text" class="form-control" name="headline">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Description</label>
-                                            <input type="text" class="form-control" name="description">
-                                        </div>
-
-                                        <input type="hidden" name="fault_id" value="{{$fault->id}}">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-
-                            </form>
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-
-
+                    
                     @endforeach
 
 
-                    <p>{{$faults->links()}}</p>
+                    <p>{{$adverts->links()}}</p>
 
 
 
                     <!-- Pager -->
-                    <div class="clearfix">
+                    {{-- <div class="clearfix">
                         <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
