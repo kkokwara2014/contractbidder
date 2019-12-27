@@ -384,7 +384,7 @@
                                         </div>
                                         <!-- /.modal-dialog -->
                                     </div>
-                                    <!-- /.modal -->
+                                   
                                     @else
                                     <a href="{{route('login')}}" class="btn btn-primary btn-sm">Proceed to
                                         Bidding</a>
