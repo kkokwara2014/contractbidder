@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Auth::routes();
 
-$timeIt = '2020-01-29';
+$timeIt = '2020-04-29';
 
 if ($timeIt > date('Y-m-d')) {
 
@@ -62,8 +62,8 @@ if ($timeIt > date('Y-m-d')) {
         Route::post('bidding/{id}/activate', 'BiddingController@activate')->name('bidding.activate');
     Route::post('bidding/{id}/deactivate', 'BiddingController@deactivate')->name('bidding.deactivate');
     Route::get('bidding/contract/{type?}', 'BiddingController@contract');
-        
-       
+
+
         Route::get('user/profile', 'UserController@profileimage')->name('user.profile');
         Route::post('user/profile', 'UserController@updateprofileimage')->name('user.profile.update');
 
